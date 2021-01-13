@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/stages/stage1/sprites/stage1BG.jpg" type="Texture" id=1]
 [ext_resource path="res://assets/stages/stage1/stage1.gd" type="Script" id=2]
 [ext_resource path="res://assets/stages/stage1/sprites/field.png" type="Texture" id=3]
-[ext_resource path="res://assets/enemies/wimpy.tscn" type="PackedScene" id=4]
 
 [node name="stage1" type="Node2D"]
 script = ExtResource( 2 )
@@ -28,9 +27,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="wimpy" parent="." instance=ExtResource( 4 )]
-position = Vector2( 645.831, -69.9567 )
-
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 position = Vector2( 642.515, -3.36739 )
 amount = 500
@@ -46,3 +42,5 @@ scale_amount = 2.0
 scale_amount_random = 1.0
 color = Color( 0.498039, 0.443137, 0.717647, 1 )
 hue_variation_random = 0.36
+
+[node name="enemyTimer" type="Timer" parent="."]

@@ -36,5 +36,4 @@ func damage(amount : float):
 		queue_free()
 
 func _on_Area2D_area_entered(area):
-	
-	print("boo2")
+	pass

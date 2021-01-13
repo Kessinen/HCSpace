@@ -15,6 +15,7 @@ height = 32.7664
 collision_layer = 2
 collision_mask = 5
 script = ExtResource( 2 )
+life = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 modulate = Color( 1, 0, 0, 1 )
