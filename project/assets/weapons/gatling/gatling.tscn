@@ -9,6 +9,8 @@ radius = 4.63293
 height = 12.7157
 
 [node name="Gatling" type="RigidBody2D"]
+collision_layer = 4
+collision_mask = 2
 gravity_scale = 0.0
 linear_velocity = Vector2( 0, -20 )
 script = ExtResource( 3 )
