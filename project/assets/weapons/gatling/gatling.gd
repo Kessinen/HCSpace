@@ -12,6 +12,7 @@ func _enter_tree():
 func _ready():
 	
 	apply_impulse(Vector2(),Vector2(0,BULLETSPEED))
+	get_node("AudioStreamPlayer").play()
 	
 	
 	
