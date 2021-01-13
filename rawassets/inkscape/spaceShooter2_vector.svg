@@ -18,6 +18,17 @@
    id="svg5325"
    sodipodi:docname="spaceShooter2_vector.svg"
    inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)">
+  <use
+     xlink:href="#Layer0_161_FILL"
+     id="use10701"
+     x="0"
+     y="0"
+     width="100%"
+     height="100%"
+     transform="translate(2564.4578,-463.57455)"
+     inkscape:export-filename="/home/esa/Projects/HCSpace/project/assets/enemies/sprites/wimpy.png"
+     inkscape:export-xdpi="50"
+     inkscape:export-ydpi="50" />
   <metadata
      id="metadata5329">
     <rdf:RDF>
@@ -42,9 +53,9 @@
      inkscape:window-height="1375"
      id="namedview5327"
      showgrid="false"
-     inkscape:zoom="0.70710678"
-     inkscape:cx="1370.143"
-     inkscape:cy="-361.12427"
+     inkscape:zoom="1"
+     inkscape:cx="2696.4044"
+     inkscape:cy="387.19403"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"

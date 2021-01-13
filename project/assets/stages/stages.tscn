@@ -25,7 +25,7 @@ position = Vector2( 500, 670 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 8
-collision_mask = 2
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 720, -20.13 )
@@ -64,9 +64,8 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="ColorRect/VBoxContainer"]
-margin_top = 25.0
-margin_right = 239.0
-margin_bottom = 25.0
+margin_right = 240.0
+margin_bottom = 14.0
 text = "HCSpace"
 align = 1
 __meta__ = {
@@ -74,9 +73,9 @@ __meta__ = {
 }
 
 [node name="TextureRect" type="TextureRect" parent="ColorRect/VBoxContainer"]
-margin_top = 75.0
-margin_right = 239.0
-margin_bottom = 312.0
+margin_top = 18.0
+margin_right = 240.0
+margin_bottom = 255.0
 texture = ExtResource( 5 )
 stretch_mode = 4
 
