@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/player/sprites/default.png" type="Texture" id=1]
+[ext_resource path="res://assets/player/defaultShip.gd" type="Script" id=2]
+[ext_resource path="res://assets/player/ship1.gd" type="Script" id=3]
+
+[node name="defaultShip" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="ship1" type="KinematicBody2D" parent="."]
+script = ExtResource( 3 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ship1"]
+visible = false
+polygon = PoolVector2Array( 6, -18.375, 8.25, -24.875, 18, -25, 22.3633, -5.81793, 32.8745, -8.34062, 35.8176, -0.772552, 26.1473, 16.8863, 24.4655, 24.0339, 19.4202, 24.4543, 18.1588, 19.409, 11.0112, 21.0907, 11.4316, 15.6249, 0.920441, 24.0339, -9.17032, 16.8863, -11.2726, 16.8863, -11.693, 22.7725, -17.9997, 21.5112, -19.2611, 25.2952, -24.3065, 25.2952, -27.2496, 17.7272, -25.1473, 15.2045, -36.4995, -2.8748, -31.4541, -11.7042, -22.2042, -7.07928, -18.8406, -15.4883, -17.5793, -25.579, -3.28406, -25.1586, -3.7045, -18.8518, 1, -18.75 )
+
+[node name="default" type="Sprite" parent="ship1"]
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 1 )

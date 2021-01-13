@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/weapons/gatling/sprites/gatling.png" type="Texture" id=1]
+[ext_resource path="res://assets/weapons/gatling/gatling.gd" type="Script" id=3]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 4.63293
+height = 12.7157
+
+[node name="Gatling" type="RigidBody2D"]
+gravity_scale = 0.0
+linear_velocity = Vector2( 0, -20 )
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="gatling2" type="Sprite" parent="."]
+texture = ExtResource( 1 )
