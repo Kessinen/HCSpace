@@ -3,6 +3,10 @@
 version=$(git tag)
 rev=$(git rev-parse --short HEAD)
 
+mkdir -p project/build/linux
+mkdir -p project/build/win64
+mkdir -p dist
+
 godot project/project.godot --export-debug linux build/linux/HCSpace.x86_64
 godot project/project.godot --export-debug win64 build/win64/HCSpace.exe
 
