@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/player/sprites/default.png" type="Texture" id=1]
+[ext_resource path="res://assets/player/player.gd" type="Script" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 1.71888
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 18.5889, 14.1343 )
+
+[node name="player" type="KinematicBody2D"]
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+disabled = true
+
+[node name="playerArea" type="Area2D" parent="."]
+gravity = 0.0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="playerArea"]
+shape = SubResource( 2 )
+
+[node name="ship1" type="KinematicBody2D" parent="."]
+collision_mask = 10
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ship1"]
+position = Vector2( 0.0701523, 0 )
+polygon = PoolVector2Array( 3.36549, -11.6789, 5.11934, -16.1687, 12.5556, -16.1687, 14.1692, -4.94411, 21.7458, -6.41734, 22.728, -1.85734, 17.1156, 10.4897, 17.1858, 16.4528, 14.3095, 17.5051, 11.4316, 15.6249, 8.13641, 15.7624, 6.17164, 11.3316, -0.00189972, 16.1021, -5.89482, 12.2436, -7.15759, 15.8214, -16.7687, 16.3125, -23.0124, 1.15928, -23.5034, -7.25919, -14.8044, -4.38288, -13.3311, -8.52196, -13.0505, -16.1687, -3.43944, -16.6598, -3.57975, -11.6087 )
+
+[node name="default" type="Sprite" parent="ship1"]
+texture = ExtResource( 1 )

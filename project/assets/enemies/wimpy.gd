@@ -9,8 +9,11 @@ var MAXSPEED = 1
 var ACCELERATION = 100
 var canFire = true
 export var life := 20
-
+export var rof = 5
 var randomPoint = Vector2.ZERO
+onready var plBullet := preload("res://assets/weapons/enemyWeapons/enemyWeapons.tscn")
+onready var fireDelay := $fireDelay
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -28,7 +31,21 @@ func _physics_process(delta):
 	direction = direction.normalized() * MAXSPEED
 	velocity = velocity.move_toward(direction,ACCELERATION*delta)
 	move_and_collide(velocity)
+	if fireDelay.is_stopped():
+		fireDelay.start(rof)
+		fire()
 	
+func fire():
+	var ownPosition = get_global_position()
+	var playerPosition = get_node("/root/global").playerPosition
+	var playerDirection = playerPosition - ownPosition
+	
+	var bullet = plBullet.instance()
+	bullet.position = ownPosition
+	bullet.bulletSpeed = 200
+	get_parent().add_child(bullet)
+	pass
+
 
 func damage(amount : float):
 	life -= amount

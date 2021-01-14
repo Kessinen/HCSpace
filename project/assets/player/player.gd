@@ -1,13 +1,28 @@
 extends KinematicBody2D
 
+
+var WEAPON = "gatling"
+var GUN = preload("res://assets/weapons/gatling/gatlingun.tscn")
+onready var canFire = GUN.instance()
+onready var ship := $ship1
+
 var velocity = Vector2.ZERO
 var MAXSPEED = 300.0
 var ACCELERATION = 20
 var FRICTION = 1.0
+export var hitpoints = 20
+export var shields = 20
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
+	
 	pass # Replace with function body.
+
+func _process(delta):
+	if Input.is_action_pressed("shoot"):
+		add_child(canFire)
+		var gun = $canFire 
+		canFire.fire(ship.get_global_position())
+		pass
 
 func _physics_process(delta):
 	var input_vector = Vector2.ZERO
@@ -18,17 +33,23 @@ func _physics_process(delta):
 	if input_vector != Vector2.ZERO:
 		
 		velocity = velocity.move_toward(input_vector * MAXSPEED, ACCELERATION)
-		#velocity += input_vector * ACCELERATION
-		#velocity = velocity.clamped(MAXSPEED)
-		#velocity = velocity.move_toward(input_vector * MAXSPEED, ACCELERATION)
 
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, ACCELERATION)
-		
-	var windowX = get_viewport_rect().size.x
-	
-	#if get_position().x > windowX/2-20:
-	#	velocity.x = -0.1
+
+
 	velocity = move_and_slide(velocity)
+	get_node("/root/global").playerPosition = self.get_global_position()
+		
+func damage(damage : float):
+	if shields < damage:
+		var difference = shields - damage
+		shields = 0
+		hitpoints -= damage
+		if hitpoints < 0:
+			queue_free()
+	else:
+		shields -= damage
 	
-	
+	print(hitpoints)
+	pass

@@ -23,14 +23,17 @@ self_modulate = Color( 1, 0, 0, 1 )
 rotation = 1.5708
 shape = SubResource( 1 )
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="winpyArea" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 5
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="winpyArea"]
 rotation = 1.5708
 shape = SubResource( 2 )
 
 [node name="wimpy" type="Sprite" parent="."]
 texture = ExtResource( 1 )
-[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
+
+[node name="fireDelay" type="Timer" parent="."]
+one_shot = true
+[connection signal="area_entered" from="winpyArea" to="." method="_on_Area2D_area_entered"]
