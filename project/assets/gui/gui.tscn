@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/gui/mainmenu.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/gui/gui.gd" type="Script" id=2]
+[ext_resource path="res://assets/stages/stages.tscn" type="PackedScene" id=3]
+
+[node name="gui" type="CanvasLayer"]
+script = ExtResource( 2 )
+
+[node name="Mainmenu" parent="." instance=ExtResource( 1 )]
+pause_mode = 2
+
+[node name="stages" parent="." instance=ExtResource( 3 )]
+visible = false

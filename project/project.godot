@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="HCSpace"
-run/main_scene="res://assets/stages/stages.tscn"
+run/main_scene="res://assets/gui/gui.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -66,6 +66,7 @@ shoot={
 2d_physics/layer_1="Player"
 2d_physics/layer_2="Enemy"
 2d_physics/layer_3="Bullets"
+2d_physics/layer_4="Walls"
 
 [rendering]
 
