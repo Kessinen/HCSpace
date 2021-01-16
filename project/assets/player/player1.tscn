@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/player/player1.gd" type="Script" id=2]
 [ext_resource path="res://assets/player/ship1.gd" type="Script" id=3]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 18.5889, 14.1343 )
 
 [node name="player1" type="Node2D"]
@@ -19,7 +19,7 @@ gravity = 0.0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ship/playerArea"]
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ship"]
 position = Vector2( 0.0701523, 0 )
@@ -27,4 +27,3 @@ polygon = PoolVector2Array( 3.36549, -11.6789, 5.11934, -16.1687, 12.5556, -16.1
 
 [node name="default" type="Sprite" parent="ship"]
 texture = ExtResource( 1 )
-[connection signal="area_entered" from="ship/playerArea" to="ship" method="_on_playerArea_area_entered"]
