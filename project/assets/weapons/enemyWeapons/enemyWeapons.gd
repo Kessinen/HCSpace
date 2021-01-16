@@ -16,7 +16,7 @@ func _on_VisibilityNotifier2D_screen_exited():
 
 func _on_EnemyBulletArea_area_entered(area):
 	var target = area.get_parent()
-	if target.get_name() == "player":
+	if target.get_name() == "ship":
 		target.damage(bulletDamage)
 		queue_free()
 		pass

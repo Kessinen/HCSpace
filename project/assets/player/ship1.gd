@@ -4,7 +4,7 @@ extends KinematicBody2D
 var WEAPON = "gatling"
 var GUN = preload("res://assets/weapons/gatling/gatlingun.tscn")
 onready var canFire = GUN.instance()
-onready var ship := $ship1
+onready var ship := $ship
 
 var velocity = Vector2.ZERO
 var MAXSPEED = 300.0
@@ -21,7 +21,7 @@ func _process(delta):
 	if Input.is_action_pressed("shoot"):
 		add_child(canFire)
 		var gun = $canFire 
-		canFire.fire(ship.get_global_position())
+		canFire.fire(self.get_global_position())
 		pass
 
 func _physics_process(delta):
@@ -46,10 +46,8 @@ func damage(damage : float):
 		var difference = shields - damage
 		shields = 0
 		hitpoints -= damage
-		if hitpoints < 0:
+		if hitpoints <= 0:
 			queue_free()
 	else:
 		shields -= damage
-	
-	print(hitpoints)
 	pass
