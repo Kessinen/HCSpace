@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="HCSpace"
-run/main_scene="res://assets/gui/gui.tscn"
+run/main_scene="res://assets/gui/mainmenu.tscn"
 config/icon="res://icon.png"
 
 [autoload]

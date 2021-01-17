@@ -13,9 +13,9 @@ func _on_btnQuit_pressed():
 
 
 func _on_btnNew_pressed():
-	var stages = get_parent().get_node("stages")
-	stages.show()
-	get_tree().paused = false
+	get_tree().change_scene("res://assets/stages/stages.tscn")
+	
+	
 	
 	
 	pass
