@@ -12,6 +12,7 @@ export var life := 20
 export var rof = 5
 var randomPoint = Vector2.ZERO
 onready var plBullet := preload("res://assets/weapons/enemyWeapons/enemyWeapons.tscn")
+onready var plLoot := preload("res://assets/loot/loot.tscn")
 onready var fireDelay := $fireDelay
 
 
@@ -50,6 +51,9 @@ func fire():
 func damage(amount : float):
 	life -= amount
 	if life <= 0:
+		var loot = plLoot.instance()
+		loot.position = get_global_position()
+		get_parent().add_child(loot)
 		queue_free()
 
 func _on_Area2D_area_entered(area):

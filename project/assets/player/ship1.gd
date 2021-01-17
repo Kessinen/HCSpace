@@ -11,12 +11,16 @@ var ACCELERATION = 20
 export var maxhitpoints = 20
 export var maxshields = 20
 export var maxenergy = 200
+export var cargoSize = 200
 var hitpoints = maxhitpoints
 var shields = maxshields
 var energy = maxenergy
 var shieldRecharge = 5
-var energyRecharge = 0.1
+var energyRecharge = 0.05
 var shieldRechargeCost = 5
+var lootingarea = 95
+var cargoValue = 0
+
 
 onready var hpBar := get_tree().get_root().find_node("hpBar", true, false)
 onready var shieldsBar := get_tree().get_root().find_node("shieldsBar", true, false)
@@ -35,14 +39,11 @@ func _ready():
 	shieldRechargeTimer.start()
 	energyRechargeTimer.wait_time = energyRecharge
 	energyRechargeTimer.start()
+	$lootingArea/CollisionShape2D.shape.radius = lootingarea
 
 func _process(delta):
 	if Input.is_action_pressed("shoot") and energy > 0:
-		add_child(canFire)
-		var gun = $canFire 
-		canFire.fire(self.get_global_position())
-		energy -= 1
-		energyBar.value = energy
+		fireGuns()
 
 func _physics_process(delta):
 	var input_vector = Vector2.ZERO
@@ -71,6 +72,15 @@ func damage(damage : float):
 	hpBar.value = hitpoints
 	shieldsBar.value = shields
 
+func fireGuns():
+	add_child(canFire)
+	var energyReq = canFire.energyRequired
+	
+	if energy >= energyReq:
+		canFire.fire(self.get_global_position())
+		energy -= energyReq
+	energyBar.value = energy
+
 func _on_shieldRecharge_timeout():
 	if shields < maxshields and energy >= shieldRechargeCost:
 		shieldsBar.value += 1
@@ -82,3 +92,19 @@ func _on_energyRecharge_timeout():
 	if energy < maxenergy:
 		energyBar.value += 1
 		energy +=1
+
+func _on_lootingArea_body_entered(body):
+	body.attract(true)
+	
+func _on_lootingArea_body_exited(body):
+	body.attract(false)
+
+func _on_playerArea_body_entered(body):
+	var loottable = get_tree().get_nodes_in_group("Loot")
+	if body in loottable:
+		if cargoSize > body.cargoSize:
+			var cashLabel = get_tree().get_root().find_node("lblCash", true, false)
+			cargoSize -= body.cargoSize
+			cargoValue += body.money
+			body.queue_free()
+			cashLabel.text = str(cargoValue)

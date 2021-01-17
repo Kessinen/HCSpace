@@ -8,6 +8,7 @@ export var rateoffire: float = 0.4
 var plBullet := preload("res://assets/weapons/gatling/bullet.tscn")
 onready var rofTimer := $rofTimer
 
+export var energyRequired = 2
 
 func _ready():
 	pass
