@@ -1,25 +1,20 @@
 extends KinematicBody2D
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 var velocity = Vector2.ZERO
 var MAXSPEED = 1
 var ACCELERATION = 100
 var canFire = true
 export var life := 20
 export var rof = 5
+export var minLoot = 1
+export var maxLoot = 5
 var randomPoint = Vector2.ZERO
 onready var plBullet := preload("res://assets/weapons/enemyWeapons/enemyWeapons.tscn")
 onready var plLoot := preload("res://assets/loot/loot.tscn")
 onready var fireDelay := $fireDelay
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	
-	pass # Replace with function body.
+	pass
 
 func _physics_process(delta):
 	
@@ -40,12 +35,11 @@ func fire():
 	var ownPosition = get_global_position()
 	var playerPosition = get_node("/root/global").playerPosition
 	var playerDirection = playerPosition - ownPosition
-	
 	var bullet = plBullet.instance()
+	
 	bullet.position = ownPosition
 	bullet.bulletSpeed = 200
 	get_parent().add_child(bullet)
-	pass
 
 
 func damage(amount : float):
@@ -53,6 +47,8 @@ func damage(amount : float):
 	if life <= 0:
 		var loot = plLoot.instance()
 		loot.position = get_global_position()
+		loot.money = round(rand_range(minLoot,maxLoot))
+		print(loot.money)
 		get_parent().add_child(loot)
 		queue_free()
 

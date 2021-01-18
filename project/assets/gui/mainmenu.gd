@@ -13,9 +13,4 @@ func _on_btnQuit_pressed():
 
 
 func _on_btnNew_pressed():
-	get_tree().change_scene("res://assets/stages/stages.tscn")
-	
-	
-	
-	
-	pass
+	get_tree().change_scene("res://assets/gui/levels.tscn")

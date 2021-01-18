@@ -8,6 +8,8 @@ extends Node
 var ROF = 0
 var DAMAGE = 0
 var playerPosition = Vector2.ZERO
+var loot = 0
+var totalLoot = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

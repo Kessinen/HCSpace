@@ -67,6 +67,7 @@ func damage(damage : float):
 		hitpoints -= damage
 		if hitpoints <= 0:
 			queue_free()
+			get_tree().change_scene("res://assets/gui/crash.tscn")
 	else:
 		shields -= damage
 	hpBar.value = hitpoints
@@ -94,17 +95,21 @@ func _on_energyRecharge_timeout():
 		energy +=1
 
 func _on_lootingArea_body_entered(body):
-	body.attract(true)
+	var loottable = get_tree().get_nodes_in_group("Loot")
+	if body in loottable and cargoSize > body.cargoSize:
+		body.attract(true)
 	
 func _on_lootingArea_body_exited(body):
-	body.attract(false)
+	var loottable = get_tree().get_nodes_in_group("Loot")
+	if body in loottable:
+		body.attract(false)
 
 func _on_playerArea_body_entered(body):
 	var loottable = get_tree().get_nodes_in_group("Loot")
-	if body in loottable:
-		if cargoSize > body.cargoSize:
-			var cashLabel = get_tree().get_root().find_node("lblCash", true, false)
-			cargoSize -= body.cargoSize
-			cargoValue += body.money
-			body.queue_free()
-			cashLabel.text = str(cargoValue)
+	if body in loottable and cargoSize > body.cargoSize:
+		var cashLabel = get_tree().get_root().find_node("lblCash", true, false)
+		cargoSize -= body.cargoSize
+		cargoValue += body.money
+		body.queue_free()
+		cashLabel.text = str(cargoValue)
+		get_parent().loot = cargoValue
