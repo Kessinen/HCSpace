@@ -9,18 +9,21 @@ extents = Vector2( 18.5889, 14.1343 )
 [sub_resource type="CircleShape2D" id=2]
 radius = 70.0
 
-[node name="SB0" type="KinematicBody2D"]
+[node name="SB0" type="KinematicBody2D" groups=[
+"players",
+]]
 collision_mask = 10
 script = ExtResource( 1 )
 shipModel = "SB-0"
 maxHP = 10.0
 maxShields = 5.0
 maxEnergy = 20.0
-shipSpeed = 100.0
+shipSpeed = 200.0
 shipAcceleration = 5.0
 maxCargo = 50.0
 shieldRegenSpeed = 10.0
 energyRegenSpeed = 0.5
+lootingRange = 200.0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2( 0.0701523, 0 )
@@ -43,5 +46,6 @@ collision_mask = 16
 [node name="CollisionShape2D" type="CollisionShape2D" parent="lootingArea"]
 shape = SubResource( 2 )
 [connection signal="body_entered" from="damageArea" to="." method="_on_playerArea_body_entered"]
+[connection signal="body_exited" from="damageArea" to="." method="_on_damageArea_body_exited"]
 [connection signal="body_entered" from="lootingArea" to="." method="_on_lootingArea_body_entered"]
 [connection signal="body_exited" from="lootingArea" to="." method="_on_lootingArea_body_exited"]

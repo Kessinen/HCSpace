@@ -7,10 +7,11 @@ export var rateOfFire: float
 export var shield: float
 export var speed: float
 export var acceleration: float = 1000
-export(int) var minLoot: int
-export(int) var maxLoot: int
+export(float) var minLoot: float = 1
+export(float) var maxLoot: float = 1
 export(float) var rechargeShield: float
 
+onready var plLoot := preload("res://loot/loot.tscn")
 var shieldRechargeTimer = Timer.new()
 var rofTimer = Timer.new()
 var curShield: float
@@ -39,7 +40,6 @@ func move_to_point(target: Vector2):
 	moveToTarget = move_and_slide(moveToTarget)
 
 func damage(amount):
-	print(curHitPoints)
 	if amount > curShield:
 		curHitPoints -=  amount - curShield
 		curShield = 0
@@ -49,4 +49,8 @@ func damage(amount):
 		die()
 
 func die():
+	randomize()
+	var reward = plLoot.instance()
+	reward.init(rand_range(minLoot,maxLoot), position)
+	get_parent().add_child(reward)
 	queue_free()

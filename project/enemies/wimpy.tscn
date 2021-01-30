@@ -21,6 +21,8 @@ hitPoints = 2.0
 rateOfFire = 1.0
 speed = 100.0
 acceleration = 5.0
+minLoot = 1.0
+maxLoot = 200.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 modulate = Color( 1, 0, 0, 1 )

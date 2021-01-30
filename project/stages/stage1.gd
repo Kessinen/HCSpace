@@ -1,6 +1,6 @@
 extends Node2D
 
-onready var plGui = preload("res://gui/stages.tscn")
+onready var plGui = preload("res://gui/stageHUD.tscn")
 onready var plShip = preload("res://player/sb0.tscn")
 onready var plWhimpy = preload("res://enemies/wimpy.tscn")
 

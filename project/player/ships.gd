@@ -10,9 +10,11 @@ export var shipSpeed: float
 export var shipAcceleration: float 
 export var maxCargo: float 
 export var shieldRegenSpeed: float 
-export var shieldRegenAmount: float 
+export var shieldRegenAmount: float = 1
+export var shieldRegenCost: float = 1
 export var energyRegenSpeed: float 
-export var energyRegenAmount: float 
+export var energyRegenAmount: float = 1
+export var lootingRange: float = 70
 
 var rechargeShieldsTimer := Timer.new()
 var rechargeEnergyTimer := Timer.new()
@@ -21,19 +23,22 @@ var curShield: float = 0
 var curHP: float = 0
 var curEnergy: float = 0
 var curCargo: float = 0
+var curLootValue: float = 0
 
 var velocity := Vector2.ZERO
 var direction := Vector2.ZERO
 
 func _ready():
-	pass
+	var hud = get_parent().get_node("HUD")
+	hud.initBars(maxHP, maxShields, maxEnergy)
 
 func _physics_process(delta):
 	rechargeShields()
 	rechargeEnergy()
 	move()
+	updateHUD()
 
-func initShip():
+func initStats():
 	curHP = maxHP
 	curShield = maxShields
 	curEnergy = maxEnergy
@@ -51,7 +56,8 @@ func move():
 	get_node("/root/global").playerPosition = position
 
 func rechargeShields():
-	if rechargeShieldsTimer.is_stopped() and curShield < maxShields:
+	if rechargeShieldsTimer.is_stopped() and curShield < maxShields and curEnergy > shieldRegenCost:
+		curEnergy -= shieldRegenCost
 		rechargeShieldsTimer.start(shieldRegenSpeed)
 		curShield += shieldRegenAmount
 		curShield = clamp(curShield, 0, maxShields)
@@ -61,7 +67,21 @@ func rechargeEnergy():
 		rechargeEnergyTimer.start(energyRegenSpeed)
 		curEnergy += energyRegenAmount
 		curEnergy = clamp(curEnergy, 0, maxEnergy)
-		
+
+func updateCargo(lootSize: float, lootValue: float) -> bool:
+	var cargoSpaceLeft = maxCargo - curCargo
+	if lootSize < cargoSpaceLeft:
+		curCargo += lootSize
+		curLootValue += lootValue
+		return true
+	return false
+
+func updateHUD():
+	var hud = get_parent().get_node("HUD")
+	hud.updateLoot(curLootValue)
+	hud.updateBars(curHP, curShield, curEnergy)
+	pass
+
 func damage(amount: float):
 	if curShield > amount:
 		curShield -= amount

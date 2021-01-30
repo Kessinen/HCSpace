@@ -1,7 +1,7 @@
 extends enemiesBase
 
 var randomPoint = Vector2.ZERO
-onready var plLoot := preload("res://assets/loot/loot.tscn")
+
 
 
 func _ready():

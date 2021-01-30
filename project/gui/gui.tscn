@@ -2,7 +2,7 @@
 
 [ext_resource path="res://gui/gui.gd" type="Script" id=1]
 [ext_resource path="res://menus/mainmenu.tscn" type="PackedScene" id=2]
-[ext_resource path="res://gui/stages.tscn" type="PackedScene" id=3]
+[ext_resource path="res://gui/stageHUD.tscn" type="PackedScene" id=3]
 
 [node name="gui" type="CanvasLayer"]
 script = ExtResource( 1 )

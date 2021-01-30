@@ -1,13 +1,13 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://assets/loot/loot.gd" type="Script" id=1]
-[ext_resource path="res://assets/loot/sprites/coin.png" type="Texture" id=2]
+[ext_resource path="res://loot/loot.gd" type="Script" id=1]
+[ext_resource path="res://loot/sprites/coin.png" type="Texture" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 9.97322
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 47.3876
+radius = 14.2149
 
 [sub_resource type="Animation" id=3]
 resource_name = "bronze"
@@ -89,4 +89,5 @@ anims/gold = SubResource( 4 )
 anims/silver = SubResource( 5 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+[connection signal="body_entered" from="playerSearch" to="." method="_on_playerSearch_body_entered"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
