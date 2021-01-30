@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/audio.ogg-38e8e6f15aabac596ce19306765b1318.oggstr"
+
+[deps]
+
+source_file="res://weapons/gatling/audio/audio.ogg"
+dest_files=[ "res://.import/audio.ogg-38e8e6f15aabac596ce19306765b1318.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
