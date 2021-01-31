@@ -12,8 +12,8 @@ radius = 15.7797
 height = 32.7664
 
 [node name="wimpy" type="KinematicBody2D" groups=[
-"Enemies",
 "canDamage",
+"enemies",
 ]]
 collision_layer = 2
 script = ExtResource( 2 )
@@ -22,7 +22,7 @@ rateOfFire = 1.0
 speed = 100.0
 acceleration = 5.0
 minLoot = 1.0
-maxLoot = 200.0
+maxLoot = 5.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 modulate = Color( 1, 0, 0, 1 )
@@ -40,3 +40,6 @@ shape = SubResource( 2 )
 
 [node name="wimpy" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+
+[node name="gunPosition" type="Node2D" parent="."]
+position = Vector2( 0, 18 )

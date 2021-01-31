@@ -31,6 +31,11 @@ var direction := Vector2.ZERO
 func _ready():
 	var hud = get_parent().get_node("HUD")
 	hud.initBars(maxHP, maxShields, maxEnergy)
+	
+	rechargeEnergyTimer.one_shot = true
+	rechargeShieldsTimer.one_shot = true
+	add_child(rechargeShieldsTimer)
+	add_child(rechargeEnergyTimer)
 
 func _physics_process(delta):
 	rechargeShields()
@@ -57,16 +62,16 @@ func move():
 
 func rechargeShields():
 	if rechargeShieldsTimer.is_stopped() and curShield < maxShields and curEnergy > shieldRegenCost:
-		curEnergy -= shieldRegenCost
 		rechargeShieldsTimer.start(shieldRegenSpeed)
+		curEnergy -= shieldRegenCost
 		curShield += shieldRegenAmount
-		curShield = clamp(curShield, 0, maxShields)
+	curShield = clamp(curShield, 0, maxShields)
 
 func rechargeEnergy():
 	if rechargeEnergyTimer.is_stopped() and curEnergy < maxEnergy:
 		rechargeEnergyTimer.start(energyRegenSpeed)
 		curEnergy += energyRegenAmount
-		curEnergy = clamp(curEnergy, 0, maxEnergy)
+	curEnergy = clamp(curEnergy, 0, maxEnergy)
 
 func updateCargo(lootSize: float, lootValue: float) -> bool:
 	var cargoSpaceLeft = maxCargo - curCargo
@@ -86,10 +91,15 @@ func damage(amount: float):
 	if curShield > amount:
 		curShield -= amount
 	else:
-		curHP -= amount - curShield
+		amount -= curShield
+		curHP -= amount
 		curShield = 0
 	if curHP <= 0:
 		die()
 
 func die():
 	queue_free()
+	get_tree().change_scene("res://gui/crash.tscn")
+	
+func _exit_tree():
+	get_node("/root/global").loot = curLootValue

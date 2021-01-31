@@ -7,9 +7,10 @@ export var rateOfFire: float
 export var shield: float
 export var speed: float
 export var acceleration: float = 1000
-export(float) var minLoot: float = 1
-export(float) var maxLoot: float = 1
-export(float) var rechargeShield: float
+export var minLoot: float = 1
+export var maxLoot: float = 1
+export var rechargeShield: float
+export var damage: float = 1
 
 onready var plLoot := preload("res://loot/loot.tscn")
 var shieldRechargeTimer = Timer.new()

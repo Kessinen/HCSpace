@@ -15,14 +15,16 @@ radius = 70.0
 collision_mask = 10
 script = ExtResource( 1 )
 shipModel = "SB-0"
-maxHP = 10.0
-maxShields = 5.0
-maxEnergy = 20.0
+maxHP = 100.0
+maxShields = 500.0
+maxEnergy = 100.0
 shipSpeed = 200.0
 shipAcceleration = 5.0
 maxCargo = 50.0
-shieldRegenSpeed = 10.0
-energyRegenSpeed = 0.5
+shieldRegenSpeed = 0.1
+shieldRegenAmount = 2.0
+shieldRegenCost = 7.0
+energyRegenSpeed = 0.01
 lootingRange = 200.0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
