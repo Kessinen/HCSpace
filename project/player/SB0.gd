@@ -1,6 +1,6 @@
 extends shipsBase
 
-var plZip22 = preload("res://weapons/wideboy.tscn")
+var plZip22 = preload("res://weapons/zip22.tscn")
 var rofTimer = Timer.new()
 
 func _ready():

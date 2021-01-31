@@ -4,7 +4,11 @@ var velocity : Vector2
 
 func _physics_process(delta):
 	velocity = Vector2(0,bulletSpeed * -1)
-	var testi = move_and_collide(velocity * delta)
+	
+	#var testi = move_and_collide(velocity * delta)
+
+func _ready():
+	apply_impulse(Vector2(),Vector2.UP * bulletSpeed)
 
 func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()

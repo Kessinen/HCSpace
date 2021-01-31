@@ -47,7 +47,5 @@ collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="lootingArea"]
 shape = SubResource( 2 )
-[connection signal="body_entered" from="damageArea" to="." method="_on_playerArea_body_entered"]
-[connection signal="body_exited" from="damageArea" to="." method="_on_damageArea_body_exited"]
 [connection signal="body_entered" from="lootingArea" to="." method="_on_lootingArea_body_entered"]
 [connection signal="body_exited" from="lootingArea" to="." method="_on_lootingArea_body_exited"]
