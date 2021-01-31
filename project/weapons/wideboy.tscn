@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://weapons/wideboy.gd" type="Script" id=1]
+[ext_resource path="res://weapons/sprites/wb53.png" type="Texture" id=2]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 3.39275
+height = 3.7165
+
+[node name="wb53" type="KinematicBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource( 1 )
+numOfBullets = 10
+spreadOfBullets = 90.0
+
+[node name="bullet" type="RigidBody2D" parent="."]
+collision_layer = 0
+collision_mask = 2147483648
+gravity_scale = 0.0
+linear_damp = 0.0
+angular_damp = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bullet"]
+shape = SubResource( 1 )
+
+[node name="sprite" type="Sprite" parent="bullet"]
+position = Vector2( -0.0992126, 0 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 2 )

@@ -23,11 +23,17 @@ _global_script_classes=[ {
 "class": "stagesBase",
 "language": "GDScript",
 "path": "res://stages/stagesBase.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "weaponsBase",
+"language": "GDScript",
+"path": "res://weapons/weaponsBase.gd"
 } ]
 _global_script_class_icons={
 "enemiesBase": "",
 "shipsBase": "",
-"stagesBase": ""
+"stagesBase": "",
+"weaponsBase": ""
 }
 
 [application]
